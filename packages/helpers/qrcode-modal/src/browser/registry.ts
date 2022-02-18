@@ -3,8 +3,8 @@ import { IAppRegistry, IAppEntry, IMobileRegistryEntry } from "@walletconnect/ty
 const officialAlgorandWallet: IAppEntry = {
   // hex encoding of 32 random bytes
   id: "23138217b046ae8d9d07e62b3337fb288c4445f92f64be067809cd0a8f9454b9",
-  name: "Algorand Wallet",
-  homepage: "https://algorandwallet.com/",
+  name: "Pera Wallet",
+  homepage: "https://perawallet.app",
   chains: [
     // need to change once a standard emerges, perhaps https://github.com/ChainAgnostic/CAIPs/pull/55
     "algorand",
@@ -26,10 +26,10 @@ const officialAlgorandWallet: IAppEntry = {
     universal: "",
   },
   metadata: {
-    shortName: "Algorand Wallet",
+    shortName: "Pera Wallet",
     colors: {
-      // "Algorand Wallet green"
-      primary: "rgb(26, 174, 152)",
+      // "Pera Wallet yellow"
+      primary: "rgb(255, 238, 85)",
       secondary: "",
     },
   },
@@ -41,7 +41,7 @@ export const registry: IAppRegistry = {
 
 export function getAppLogoUrl(id: string): string {
   if (id === officialAlgorandWallet.id) {
-    return "https://algorand-app.s3.amazonaws.com/app-icons/Algorand-WalletConnect-128.png";
+    return "https://algorand-app.s3.amazonaws.com/app-icons/Pera-walletconnect-128.png";
   }
   return "";
 }
