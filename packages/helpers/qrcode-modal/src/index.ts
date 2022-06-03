@@ -8,13 +8,29 @@ const isNode = () =>
   typeof process.versions !== "undefined" &&
   typeof process.versions.node !== "undefined";
 
-function open(uri: string, cb: any, qrcodeModalOptions?: IQRCodeModalOptions) {
+export type AlgorandQRCodeModalOptions = IQRCodeModalOptions & {
+  addAlgorandMarkerToUri?: boolean;
+};
+
+const ALGORAND_QUERY_PARAM_NAME = "algorand";
+
+function open(uri: string, cb: any, qrcodeModalOptions?: AlgorandQRCodeModalOptions) {
+  const { addAlgorandMarkerToUri, ...vanillaOptions } = qrcodeModalOptions || {};
+
+  if (addAlgorandMarkerToUri == null || addAlgorandMarkerToUri) {
+    const urlObject = new URL(uri);
+    if (!urlObject.searchParams.has(ALGORAND_QUERY_PARAM_NAME)) {
+      urlObject.searchParams.set(ALGORAND_QUERY_PARAM_NAME, "true");
+      uri = urlObject.toString();
+    }
+  }
+
   // eslint-disable-next-line no-console
   console.log(uri);
   if (isNode()) {
     nodeLib.open(uri);
   } else {
-    browserLib.open(uri, cb, qrcodeModalOptions);
+    browserLib.open(uri, cb, vanillaOptions);
   }
 }
 
