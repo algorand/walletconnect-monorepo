@@ -2,6 +2,7 @@ import { IQRCodeModalOptions } from "@walletconnect/types";
 
 import * as nodeLib from "./node";
 import * as browserLib from "./browser";
+import { transformUri } from "./transform";
 
 const isNode = () =>
   typeof process !== "undefined" &&
@@ -12,18 +13,10 @@ export type AlgorandQRCodeModalOptions = IQRCodeModalOptions & {
   addAlgorandMarkerToUri?: boolean;
 };
 
-const ALGORAND_QUERY_PARAM_NAME = "algorand";
-
 function open(uri: string, cb: any, qrcodeModalOptions?: AlgorandQRCodeModalOptions) {
   const { addAlgorandMarkerToUri, ...vanillaOptions } = qrcodeModalOptions || {};
 
-  if (addAlgorandMarkerToUri == null || addAlgorandMarkerToUri) {
-    const urlObject = new URL(uri);
-    if (!urlObject.searchParams.has(ALGORAND_QUERY_PARAM_NAME)) {
-      urlObject.searchParams.set(ALGORAND_QUERY_PARAM_NAME, "true");
-      uri = urlObject.toString();
-    }
-  }
+  uri = transformUri(uri, addAlgorandMarkerToUri);
 
   // eslint-disable-next-line no-console
   console.log(uri);
