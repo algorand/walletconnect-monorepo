@@ -6,7 +6,7 @@ import IsomorphicClient from "../src";
 import { connectTwoClients, TEST_BRIDGE_URL } from "./shared";
 
 describe("IsomorphicClient", function() {
-  this.timeout(30_000);
+  this.timeout(5 * 60_000);
   it("instantiate successfully", async () => {
     const connector = new IsomorphicClient({
       bridge: TEST_BRIDGE_URL,
