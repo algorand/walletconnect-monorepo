@@ -42,6 +42,48 @@ const officialAlgorandWallet: IAppEntry = {
   },
 };
 
+const fireblocksAlgorandWallet: IAppEntry = {
+  // hex encoding of 32 random bytes
+  id: "802bd272e62c1d7754b136e6398d4c4f6bac08744a59ebbdcd70f23fbbf7d3c0",
+  name: "Fireblocks",
+  homepage: "https://www.fireblocks.com",
+  chains: [
+    // need to change once a standard emerges, perhaps https://github.com/ChainAgnostic/CAIPs/pull/55
+    "algorand",
+  ],
+  // randomly generated UUID
+  image_id: "12024107-3dac-499e-9c69-5466a57722fd",
+  image_url: {
+    sm: "https://console.fireblocks.io/static/fireblocks-icon.png",
+    md: "https://console.fireblocks.io/static/fireblocks-icon.png",
+    lg: "https://console.fireblocks.io/static/fireblocks-icon.png",
+  },
+  app: {
+    browser: "",
+    ios: "https://apps.apple.com/us/app/fireblocks/id1439296596",
+    android: "https://play.google.com/store/apps/details?id=com.fireblocks.client",
+    mac: "",
+    windows: "",
+    linux: "",
+  },
+  mobile: {
+    native: "",
+    universal: "",
+  },
+  desktop: {
+    native: "",
+    universal: "",
+  },
+  metadata: {
+    shortName: "Fireblocks",
+    colors: {
+      primary: "rgb(255, 255, 255)",
+      secondary: "",
+    },
+  },
+};
+
 export const registry: IAppRegistry = {
   [officialAlgorandWallet.id]: officialAlgorandWallet,
+  [fireblocksAlgorandWallet.id]: fireblocksAlgorandWallet,
 };
