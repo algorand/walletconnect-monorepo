@@ -67,7 +67,7 @@ const fireblocksAlgorandWallet: IAppEntry = {
     linux: "",
   },
   mobile: {
-    native: "",
+    native: "fireblocks-wc:",
     universal: "",
   },
   desktop: {
